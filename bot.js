@@ -1,6 +1,6 @@
 // bot.js
 import { Telegraf } from 'telegraf';
-import { saveMessage } from '../db/db';
+import { saveMessage } from './db.js';
 
 const bot = new Telegraf('7949209031:AAE2CQfkiEpq1P1fzpoHQF2a_1bfsWFWa00'); // O'z bot tokeningizni kiriting
 
