@@ -1,7 +1,8 @@
-CREATE TABLE messages (
+CREATE TABLE crypto (
     id SERIAL PRIMARY KEY,
     chat_id BIGINT NOT NULL,
-    message_text TEXT,
-    photo_url TEXT,
+    name varchar(255) not null,
+    status varchar,
+    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -11,8 +11,4 @@ const pool = new Pool({
     port: process.env.DB_PORT,
 });
 
-// Xabarni bazaga saqlash funksiyasi
-export const saveMessage = async (chatId, messageText, photoUrl = null) => {
-    const query = 'INSERT INTO messages (chat_id, message_text, photo_url) VALUES ($1, $2, $3)';
-    await pool.query(query, [chatId, messageText, photoUrl]);
-};
+export default pool
