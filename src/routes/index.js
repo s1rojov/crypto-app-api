@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import upload from './upload.js'
+import upload from './crypto.js'
 const router = Router();
 
-router.use('/upload', upload);
+router.use('/crypto', upload);
 
 
 export default router;
