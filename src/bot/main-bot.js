@@ -8,7 +8,7 @@ const bot = new Telegraf(mainBotToken);
 
 // /start komandasi uchun handler
 bot.start((ctx) => {
-    ctx.reply(`Assalomu alaykum ${ctx.message.from.first_name}`, {
+    ctx.reply(`${ctx.message.from.first_name}`, {
         reply_markup: {
             keyboard: [
                 [
