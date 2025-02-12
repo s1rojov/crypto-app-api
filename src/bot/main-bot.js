@@ -18,7 +18,8 @@ bot.start(async (ctx) => {
             ],
             resize_keyboard: true,
             one_time_keyboard: true
-        }
+        },
+        
     });
 });
 
@@ -33,34 +34,36 @@ bot.on("contact",async (ctx) => {
             `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName}\n📞 **Telefon:** \`${phoneNumber}\`\n🆔 **Username:** ${username}`,
             { parse_mode: "Markdown" }
         );
-        await ctx.reply(`
-        Assalomu Alaykum! 'Ilkhomjon Ibrokhimov yopiq hamjamiyat '  obuna botiga xush kelibsiz.🎉
-Ushbu yopiq hamjamiyatda  siz Aksiya va Kripto bo'yicha eng so'ngi bilim va yangiliklarga ega bo'lish imkoniyatini qo'lga kiritasiz. Shu qatori klubga a'zo bo'lish orqali: 
-            
-📚 Aksiya va Kripto bo'yicha darslar
-    🟢Fundamental analiz
-    🟢Texnik analiz  
-🎙 Jonli efir va savol-javoblar
-📊 Signal va savdo g’oyalar 
-💬 Yopiq hamjamiyatimiz  treyderlari va kuratorlari bilan 24/7 aloqaga ega bo'lasiz
-💸 O'zimiz investitsiya qilib turgan o’rta va uzoq muddatli coinlar ro'yxati 
-        
-yana boshqa ko'plab imkoniyatlar sizni kutib turibdi!
-        
-Yopiq hamjamiyatimiz haqida to'liqroq ma'lumot olish va qanday qilib obuna bo'lish haqida bilish uchun quyidagi video orqali bilib oling 👇
-        `, {
-        reply_markup: {
-            keyboard: [
-                [
-                    { text: "Ta'riflar" },
-                    { text: "Batafsil" },
-                ]
-            ],
-            resize_keyboard: true, // Tugmalarni ekranga moslashtirish
-            // one_time_keyboard: true // Bir marta bosilgandan keyin yo'qoladi
-        }
+
+
+
+        //after clicked start btn
+        await ctx.replyWithPhoto("https://t.me/wydboi_resource/281", // Rasmingiz URL yoki fayl ID
+    {
+      caption: `
+      🥳 "O'zbekistondagi birinchi treyderlar yopiq hamjamiyati"ga qo'shilish uchun botga xush kelibsiz!
+
+Ushbu kanal ekspert Ilhomjon Ibrohimov tomonidan ishlab chiqilgan va treyderlarning rivoji uchun eng muhim qadamlarni o'z ichiga olgan maxsus resursdir!
+
+💡 Bu loyiha sizni yuksaltirish va yangi muvaffaqiyatlar sari yo'naltirishga qaratilgan. Biz bilan birga o'rganing, rivojlaning va foyda ko'ring!
+
+👇 Obuna bo'lish tugmasini bosish orqali yopiq kanalga qo'shiling.
+      `, // Tagidagi matn
     });
-    await ctx.sendVideo(postVideoUrl)
+    await ctx.sendVideo(postVideoUrl, 
+        {
+            reply_markup: {
+                keyboard: [
+                    [
+                        { text: "📢 Obuna bo‘lish" },
+                        { text: "ℹ️ Batafsil" },
+                    ]
+                ],
+                resize_keyboard: true, // Tugmalarni ekranga moslashtirish
+                // one_time_keyboard: true // Bir marta bosilgandan keyin yo'qoladi
+            }
+        }
+    )
 });
 
 

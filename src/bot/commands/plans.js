@@ -1,6 +1,6 @@
 import { Telegraf, Markup } from 'telegraf';
 const PlansCommand = (bot) => {
-    bot.hears("Ta'riflar", (ctx) => {
+    bot.hears("📢 Obuna bo‘lish", (ctx) => {
         ctx.reply("O'zingizga qulay ta'rifni tanlang:", Markup.inlineKeyboard([
             [(Markup.button.callback("1 oy - 197000 so'm", "oneMonth")),(Markup.button.callback("3 oy - 397000 so'm", "threeMonth"))]
         ]));
