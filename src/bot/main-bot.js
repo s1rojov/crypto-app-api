@@ -4,12 +4,36 @@ import InfoCommand from './commands/info.js';
 
 const mainBotToken='7810591719:AAEAU1iYrN_om1vzVKvUrdnqs4YzhRW7rxw'
 const postVideoUrl = 'https://t.me/wydboi_resource/280'
-
+const channelId = "@bot_resource"
 const bot = new Telegraf(mainBotToken);
 
 // /start komandasi uchun handler
 bot.start(async (ctx) => {
-    await ctx.reply(`
+    await ctx.reply("📲 Iltimos, kontaktingizni yuboring:", {
+        reply_markup: {
+            keyboard: [
+                [
+                    { text: "📞 Kontaktni yuborish", request_contact: true }
+                ]
+            ],
+            resize_keyboard: true,
+            one_time_keyboard: true
+        }
+    });
+});
+
+bot.on("contact",async (ctx) => {
+    const phoneNumber = ctx.message.contact.phone_number;
+    const firstName = ctx.message.from.first_name || "👤 Ism yo'q";
+    const username = ctx.message.from.username 
+        ? `@${ctx.message.from.username}`
+        : "👤 Username yo'q";
+        await ctx.telegram.sendMessage(
+            channelId,
+            `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName}\n📞 **Telefon:** \`${phoneNumber}\`\n🆔 **Username:** ${username}`,
+            { parse_mode: "Markdown" }
+        );
+        await ctx.reply(`
         Assalomu Alaykum! 'Ilkhomjon Ibrokhimov yopiq hamjamiyat '  obuna botiga xush kelibsiz.🎉
 Ushbu yopiq hamjamiyatda  siz Aksiya va Kripto bo'yicha eng so'ngi bilim va yangiliklarga ega bo'lish imkoniyatini qo'lga kiritasiz. Shu qatori klubga a'zo bo'lish orqali: 
             
