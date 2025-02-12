@@ -1,43 +1,51 @@
-import { Telegraf, Markup } from 'telegraf';
-import IdentifyCommand from './commands/identify.js';
+import { Telegraf } from 'telegraf';
+import PlansCommand from './commands/plans.js';
 import InfoCommand from './commands/info.js';
 
-const mainBotToken='7579349147:AAH7gIfoaRqUqeaJ5_TKo8VgPIYvpx9C_Dg'
+const mainBotToken='7810591719:AAEAU1iYrN_om1vzVKvUrdnqs4YzhRW7rxw'
+const postVideoUrl = 'https://t.me/wydboi_resource/280'
 
 const bot = new Telegraf(mainBotToken);
 
 // /start komandasi uchun handler
-bot.start((ctx) => {
-    ctx.reply(`${ctx.message.from.first_name}`, {
+bot.start(async (ctx) => {
+    await ctx.reply(`
+        Assalomu Alaykum! 'Ilkhomjon Ibrokhimov yopiq hamjamiyat '  obuna botiga xush kelibsiz.🎉
+Ushbu yopiq hamjamiyatda  siz Aksiya va Kripto bo'yicha eng so'ngi bilim va yangiliklarga ega bo'lish imkoniyatini qo'lga kiritasiz. Shu qatori klubga a'zo bo'lish orqali: 
+            
+📚 Aksiya va Kripto bo'yicha darslar
+    🟢Fundamental analiz
+    🟢Texnik analiz  
+🎙 Jonli efir va savol-javoblar
+📊 Signal va savdo g’oyalar 
+💬 Yopiq hamjamiyatimiz  treyderlari va kuratorlari bilan 24/7 aloqaga ega bo'lasiz
+💸 O'zimiz investitsiya qilib turgan o’rta va uzoq muddatli coinlar ro'yxati 
+        
+yana boshqa ko'plab imkoniyatlar sizni kutib turibdi!
+        
+Yopiq hamjamiyatimiz haqida to'liqroq ma'lumot olish va qanday qilib obuna bo'lish haqida bilish uchun quyidagi video orqali bilib oling 👇
+        `, {
         reply_markup: {
             keyboard: [
                 [
-                    { text: "Identify" },
-                    { text: "Info" },
+                    { text: "Ta'riflar" },
+                    { text: "Batafsil" },
                 ]
             ],
             resize_keyboard: true, // Tugmalarni ekranga moslashtirish
-            one_time_keyboard: true // Bir marta bosilgandan keyin yo'qoladi
+            // one_time_keyboard: true // Bir marta bosilgandan keyin yo'qoladi
         }
     });
+    await ctx.sendVideo(postVideoUrl)
 });
 
 
 
 //bot commands
-IdentifyCommand(bot)
+PlansCommand(bot)
 InfoCommand(bot)
-
-bot.hears("Info", (ctx) => {
-    ctx.reply("Info");
-});
 
 // Botni ishga tushirish
 bot.launch();
-
-// Xatolarni ushlash va loglash (ixtiyoriy)
-bot.catch((err) => {
-    console.log('Xatolik: ', err);
-});
 
 export default bot;
