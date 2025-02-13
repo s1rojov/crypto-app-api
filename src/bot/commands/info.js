@@ -18,9 +18,10 @@ yana boshqa ko'plab imkoniyatlar sizni kutib turibdi!
 Yopiq hamjamiyatimiz haqida to'liqroq ma'lumot olish va qanday qilib obuna bo'lish haqida bilish uchun quyidagi video orqali bilib oling 👇
         `
 );
+ctx.sendVideo(postVideoUrl)
     });
 
-     ctx.sendVideo(postVideoUrl)
+     
 };
 
 export default InfoCommand;
