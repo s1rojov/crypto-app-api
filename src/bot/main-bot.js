@@ -24,14 +24,16 @@ bot.start(async (ctx) => {
 });
 
 bot.on("contact",async (ctx) => {
+    console.log(ctx.message)
     const phoneNumber = ctx.message.contact.phone_number;
+    const userId = ctx.message.from.id;
     const firstName = ctx.message.from.first_name || "👤 Ism yo'q";
     const username = ctx.message.from.username 
         ? `@${ctx.message.from.username}`
         : "👤 Username yo'q";
         await ctx.telegram.sendMessage(
             channelId,
-            `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName}\n📞 **Telefon:** \`${phoneNumber}\`\n🆔 **Username:** ${username}`,
+            `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName}\n📞 **Telefon:** \`${phoneNumber}\`\n🔗  **Username:** ${username}\n🆔 **User ID:** \`${userId}\``,
             { parse_mode: "Markdown" }
         );
 
