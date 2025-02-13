@@ -1,3 +1,4 @@
+const postVideoUrl = 'https://t.me/wydboi_resource/282'
 const InfoCommand = (bot) => {
     bot.hears("ℹ️ Batafsil", (ctx) => {
         ctx.reply(`
@@ -18,6 +19,8 @@ Yopiq hamjamiyatimiz haqida to'liqroq ma'lumot olish va qanday qilib obuna bo'li
         `
 );
     });
+
+     ctx.sendVideo(postVideoUrl)
 };
 
 export default InfoCommand;

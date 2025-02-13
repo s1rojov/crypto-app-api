@@ -24,7 +24,7 @@ bot.start(async (ctx) => {
 });
 
 bot.on("contact",async (ctx) => {
-    console.log(ctx.message)
+    // console.log(ctx.message)
     const phoneNumber = ctx.message.contact.phone_number;
     const userId = ctx.message.from.id;
     const firstName = ctx.message.from.first_name || "👤 Ism yo'q";
