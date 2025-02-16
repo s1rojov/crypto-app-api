@@ -30,14 +30,20 @@ const subscribeKeyboard = {
 bot.start((ctx) => ctx.reply("📲 Iltimos, kontaktingizni yuboring:", contactKeyboard));
 
 bot.on("contact", async (ctx) => {
+  console.log(ctx.message)
   const { phone_number } = ctx.message.contact;
-  const { id: userId, first_name: firstName, username } = ctx.message.from;
+  const { id: userId, username } = ctx.message.from;
   const usernameDisplay = username ? `@${username}` : "👤 Username yo'q";
 
   // Yangi foydalanuvchini kanalga jo‘natish
   await ctx.telegram.sendMessage(
     channelId,
-    `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName || "👤 Ism yo'q"}\n📞 **Telefon:** \`${phone_number}\`\n🔗 **Username:** ${usernameDisplay}\n🆔 **User ID:** \`${userId}\``,
+    `
+     Yangi foydalanuvchi!\n
+     Telefon:${phone_number}\n
+     Username:${usernameDisplay}\n
+     User ID:${userId}
+    `,
     { parse_mode: "Markdown" }
   );
 
