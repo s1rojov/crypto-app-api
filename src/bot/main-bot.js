@@ -29,16 +29,23 @@ const subscribeKeyboard = {
 // /start komandasi uchun handler
 bot.start((ctx) => ctx.reply("📲 Iltimos, kontaktingizni yuboring:", contactKeyboard));
 
+
+function escapeMarkdownV2(text) {
+  return text.replace(/([_*\[\]()~`>#+\-=|{}.!])/g, '\\$1');
+}
 bot.on("contact", async (ctx) => {
-  // console.log(ctx.message)
   const { phone_number } = ctx.message.contact;
   const { id: userId, username } = ctx.message.from;
-  const usernameDisplay = username ? `@${username}` : "👤 Username yo'q";
+  // const usernameDisplay = username ? `@${username}` : "👤 Username yo'q";
 
+  const customMessage = `📢 Yangi foydalanuvchi\n` +
+  `👤 *User ID:* \`${userId}\`\n` +
+  `📞 *Telefon:* \`${phone_number}\`\n` +
+  `🔗 *Username:* ${escapeMarkdownV2("@" + username)}`;
   // Yangi foydalanuvchini kanalga jo‘natish
   await ctx.telegram.sendMessage(
     channelId,
-    `📢 Yangi foydalanuvchi\n👤 *User ID:* \`${userId}\`\n📞 *Telefon:* \`${phone_number}\`\n🔗 *Username:* ${username ? `${usernameDisplay}` : "👤 Username yo'q"}`,
+    customMessage,
     { parse_mode: "MarkdownV2" }
   );
   
