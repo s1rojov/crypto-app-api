@@ -38,7 +38,7 @@ bot.on("contact", async (ctx) => {
   // Yangi foydalanuvchini kanalga jo‘natish
   await ctx.telegram.sendMessage(
     channelId,
-    `📢 Yangi foydalanuvchi!\n👤 *User ID:* \`${userId}\`\n📞 *Telefon:* \`${phone_number}\`\n🔗 *Username:* ${username ? `@${username}` : "👤 Username yo'q"}`,
+    `📢 Yangi foydalanuvchi\n👤 *User ID:* \`${userId}\`\n📞 *Telefon:* \`${phone_number}\`\n🔗 *Username:* ${username ? `${usernameDisplay}` : "👤 Username yo'q"}`,
     { parse_mode: "MarkdownV2" }
   );
   
