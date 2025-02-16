@@ -40,7 +40,7 @@ bot.on("contact", async (ctx) => {
 
   const customMessage = `📢 Yangi foydalanuvchi\n` +
   `👤 *User ID:* \`${userId}\`\n` +
-  `📞 *Telefon:* +\`${phone_number}\`\n` +
+  `📞 *Telefon:* \`+${phone_number}\`\n` +
   `🔗 *Username:* ${escapeMarkdownV2("@" + username)}`;
   // Yangi foydalanuvchini kanalga jo‘natish
   await ctx.telegram.sendMessage(
