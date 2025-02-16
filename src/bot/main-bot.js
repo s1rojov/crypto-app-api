@@ -26,11 +26,6 @@ const subscribeKeyboard = {
   },
 };
 
-// MarkdownV2 uchun maxsus belgilarni to‘g‘ri formatlash
-function escapeMarkdown(text) {
-  return text.replace(/[_*[\]()~`>#\+\-=|{}.!]/g, "\\$&");
-}
-
 // /start komandasi uchun handler
 bot.start((ctx) => ctx.reply("📲 Iltimos, kontaktingizni yuboring:", contactKeyboard));
 
@@ -40,24 +35,30 @@ bot.on("contact", async (ctx) => {
   const usernameDisplay = username ? `@${username}` : "👤 Username yo'q";
 
   // Yangi foydalanuvchini kanalga jo‘natish
-  const messageText = `📢 Yangi foydalanuvchi!\n` +
-                      `👤 *Ism:* ${escapeMarkdown(firstName || "👤 Ism yo'q")}\n` +
-                      `📞 *Telefon:* \`${phone_number}\`\n` +
-                      `🔗 *Username:* ${escapeMarkdown(usernameDisplay)}\n` +
-                      `🆔 *User ID:* \`${userId}\``;
-
-  await ctx.telegram.sendMessage(channelId, messageText, { parse_mode: "MarkdownV2" });
+  await ctx.telegram.sendMessage(
+    channelId,
+    `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName || "👤 Ism yo'q"}\n📞 **Telefon:** \`${phone_number}\`\n🔗 **Username:** ${usernameDisplay}\n🆔 **User ID:** \`${userId}\``,
+    { parse_mode: "MarkdownV2" }
+  );
 
   // Foydalanuvchiga rasm va matn jo‘natish
-  await ctx.replyWithPhoto("https://t.me/wydboi_resource/281", {
-    caption: `🥳 "O'zbekistondagi birinchi treyderlar yopiq hamjamiyati"ga qo'shilish uchun botga xush kelibsiz!\n\n` +
-             `Ushbu kanal ekspert Ilhomjon Ibrohimov tomonidan ishlab chiqilgan va treyderlarning rivoji uchun eng muhim qadamlarni o'z ichiga olgan maxsus resursdir!\n\n` +
-             `💡 Bu loyiha sizni yuksaltirish va yangi muvaffaqiyatlar sari yo'naltirishga qaratilgan. Biz bilan birga o'rganing, rivojlaning va foyda ko'ring!\n\n` +
-             `👇 Obuna bo'lish tugmasini bosish orqali yopiq kanalga qo'shiling.`
-  });
+  await ctx.replyWithPhoto(
+    "https://t.me/wydboi_resource/281",
+    {
+      caption: `
+      🥳 "O'zbekistondagi birinchi treyderlar yopiq hamjamiyati"ga qo'shilish uchun botga xush kelibsiz!
+
+      Ushbu kanal ekspert Ilhomjon Ibrohimov tomonidan ishlab chiqilgan va treyderlarning rivoji uchun eng muhim qadamlarni o'z ichiga olgan maxsus resursdir!
+
+      💡 Bu loyiha sizni yuksaltirish va yangi muvaffaqiyatlar sari yo'naltirishga qaratilgan. Biz bilan birga o'rganing, rivojlaning va foyda ko'ring!
+
+      👇 Obuna bo'lish tugmasini bosish orqali yopiq kanalga qo'shiling.
+      `,
+    }
+  );
 
   // Foydalanuvchiga video jo‘natish
-  await ctx.replyWithVideo(postVideoUrl, subscribeKeyboard);
+  await ctx.sendVideo(postVideoUrl, subscribeKeyboard);
 });
 
 // Bot komandalarini yuklash
