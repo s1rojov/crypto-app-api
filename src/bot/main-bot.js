@@ -38,9 +38,10 @@ bot.on("contact", async (ctx) => {
   // Yangi foydalanuvchini kanalga jo‘natish
   await ctx.telegram.sendMessage(
     channelId,
-    `Yangi foydalanuvchi!\nTelefon: +${phone_number}\nUsername: ${usernameDisplay}\nUser ID: ${userId}`,
-    { parse_mode: "Markdown" }
+    `📢 Yangi foydalanuvchi!\n👤 *User ID:* \`${userId}\`\n📞 *Telefon:* \`${phone_number}\`\n🔗 *Username:* ${username ? `@${username}` : "👤 Username yo'q"}`,
+    { parse_mode: "MarkdownV2" }
   );
+  
 
   // Foydalanuvchiga rasm va matn jo‘natish
   await ctx.replyWithPhoto(
