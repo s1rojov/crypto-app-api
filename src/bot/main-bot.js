@@ -30,7 +30,7 @@ const subscribeKeyboard = {
 bot.start((ctx) => ctx.reply("📲 Iltimos, kontaktingizni yuboring:", contactKeyboard));
 
 bot.on("contact", async (ctx) => {
-  console.log(ctx.message)
+  // console.log(ctx.message)
   const { phone_number } = ctx.message.contact;
   const { id: userId, username } = ctx.message.from;
   const usernameDisplay = username ? `@${username}` : "👤 Username yo'q";
