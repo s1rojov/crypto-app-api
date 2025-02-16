@@ -38,7 +38,7 @@ bot.on("contact", async (ctx) => {
   await ctx.telegram.sendMessage(
     channelId,
     `📢 Yangi foydalanuvchi!\n👤 **Ism:** ${firstName || "👤 Ism yo'q"}\n📞 **Telefon:** \`${phone_number}\`\n🔗 **Username:** ${usernameDisplay}\n🆔 **User ID:** \`${userId}\``,
-    { parse_mode: "MarkdownV2" }
+    { parse_mode: "Markdown" }
   );
 
   // Foydalanuvchiga rasm va matn jo‘natish
